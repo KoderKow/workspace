@@ -1,69 +1,101 @@
+#' Title
+#'
+#' @param n_threads
+#' @param is_interactive
+#'
+#' @return
+#' @export
+#'
+#' @examples
 workspace_restore <- function(
-    file = "latest",
-    nthreads = parallel::detectCores() / 2
+  n_threads = 2,
+  is_interactive = interactive()
 ) {
+  assert_interactive(is_interactive)
+  stopifnot(is.numeric(n_threads))
+
   # List all files in the folder
-  files <- list.files(path = ".workspace", full.names = TRUE)
+  files <- list.files(path = "_workspace", full.names = TRUE, pattern = "\\.qs$")
 
   if (length(files) == 0) {
-    cat("no files. wah wah.")
+    cat2(
+      "Restore cancelled. There are no files to restore from. Did you run 'workspace_save()'?",
+      symbol = red_x
+    )
+
     return(invisible())
   }
 
-  if (file == "latest") {
-    # Get the file with the latest modification date
-    v_wanted_file <- files[which.max(file.info(files)$mtime)]
+  cat2(
+    "Would you like to use the latest or a specific restore point?",
+    symbol = red_todo
+  )
 
+  method <- ws_menu(c("Latest", "List out the restore points"))
+
+  if (method == 1) {
+    # Get the file with the latest modification date
+    wanted_file <- files[which.max(file.info(files)$mtime)]
   } else {
     # Get file modification times
     file_info <- file.info(files)
-    mod_times <- file_info$mtime
+    mod_times <- order(file_info$mtime)
 
     # Sort the files by modification time
-    sorted_files <- files[order(mod_times)]
+    sorted_files <- files[mod_times]
 
     # Remove the prefix and suffix
-    files_display <- gsub('^\\.workspace\\/ws-', '', sorted_files)
-    files_display <- gsub('\\.qs$', '', files_display)
+    files_display <- gsub("^_workspace\\/ws-", "", sorted_files)
+    files_display <- gsub("\\.qs$", "", files_display)
 
     # Replace the last two hyphens with colons
-    files_display <- sub('-(\\d{2})-(\\d{2})$', ':\\1:\\2', files_display)
+    files_display <- sub(last_hypen_pattern, ":", files_display, perl = TRUE)
+    files_display <- sub(last_hypen_pattern, ":", files_display, perl = TRUE)
 
     # Replace the last hyphen with a space
-    files_display <- sub('-(?!.*-)', ' ', files_display, perl = TRUE)
+    files_display <- sub(last_hypen_pattern, " ", files_display, perl = TRUE)
 
-    # Pad each character to a width of 2 and assign to variables with index
-    files_to_show_user <- paste0(
-      "- ",
-      sprintf("%02d", 1:length(files_display)),
-      ": ",
-      files_display
+    cat2(
+      "Enter a number corresponding to the wanted workspace restore point:",
+      symbol = red_todo
     )
 
-    cat(files_to_show_user, sep = "\n")
+    i <- ws_menu(files_display)
 
-    i <- readline(prompt = "Enter a number corresponding to wanted workspace savepoint from above:")
-    v_wanted_file <- sorted_files[as.numeric(i)]
+    wanted_file <- sorted_files[i]
   }
 
-  user_response <- readline(prompt = "Restoring will reset your global environment. Continue? Y/N")
+  cat2(
+    "WARNING! Restoring will reset your global environment. Continue?",
+    symbol = red_todo
+  )
 
-  stopifnot(user_response %in% c("Y", "N"))
+  user_response <- ws_menu(c("Yes", "No"))
 
-  if (user_response == "N") {
-    cat("Restore cancelled.")
+  if (user_response %in% c(0L, 2L)) {
+    cat2(
+      "Restore cancelled",
+      symbol = red_x
+    )
+
+    return(invisible())
   }
 
-  # Clear all variables except v_wanted_file and nthreads
-  to_keep <- c("v_wanted_file", "nthreads")
+  # Clear all variables except wanted_file and n_threads
+  to_keep <- c("wanted_file", "n_threads")
   vars <- ls()
   to_remove <- setdiff(vars, to_keep)
-  rm(list = to_remove, envir = .GlobalEnv)
+  suppressWarnings(rm(list = to_remove, envir = .GlobalEnv))
 
   qs::qreadm(
-    file = v_wanted_file,
+    file = wanted_file,
     env = .GlobalEnv,
-    nthreads = nthreads
+    nthreads = n_threads
+  )
+
+  cat2(
+    "Restore complete",
+    symbol = green_check
   )
 
   return(invisible())
