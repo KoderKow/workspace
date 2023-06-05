@@ -23,16 +23,14 @@ generate_file_name <- function() {
   }
 
   # Generate the file name
-  v_file_name <-
-    Sys.time() %>%
-    as.character() %>%
-    gsub(
-      x = .,
+  v_file_name_init <- gsub(
+      x = as.character(Sys.time()),
       pattern = " |:",
       replacement = "-",
       perl = TRUE
-    ) %>%
-    paste0(".workspace/ws-", ., ".qs")
+    )
+
+  v_file_name <- paste0(".workspace/ws-", v_file_name_init, ".qs")
 
   return(v_file_name)
 }

@@ -10,7 +10,7 @@ workspace_restore <- function(
     return(invisible())
   }
 
-  if (file = "latest") {
+  if (file == "latest") {
     # Get the file with the latest modification date
     v_wanted_file <- files[which.max(file.info(files)$mtime)]
 
@@ -54,7 +54,11 @@ workspace_restore <- function(
     cat("Restore cancelled.")
   }
 
-  rm(list = ls())
+  # Clear all variables except v_wanted_file and nthreads
+  to_keep <- c("v_wanted_file", "nthreads")
+  vars <- ls()
+  to_remove <- setdiff(vars, to_keep)
+  rm(list = to_remove, envir = .GlobalEnv)
 
   qs::qreadm(
     file = v_wanted_file,
