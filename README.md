@@ -5,7 +5,11 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/workspace)](https://CRAN.R-project.org/package=workspace)
 [![R-CMD-check](https://github.com/KoderKow/workspace/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/KoderKow/workspace/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/KoderKow/workspace/branch/main/graph/badge.svg)](https://app.codecov.io/gh/KoderKow/workspace?branch=main)
 <!-- badges: end -->
 
 The goal of {workspace} is to effortlessly create and restore dev

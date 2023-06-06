@@ -3,14 +3,17 @@ Title: Effortlessly create and restore dev environments
 Version: 0.0.0.9000
 Authors@R: 
     person("Kyle", "Harris", , "koderkow@gmail.com", role = c("aut", "cre"))
-Description: The goal of {workspace} is to effortlessly create and restore dev environments.
+Description: The goal of {workspace} is to effortlessly create and restore
+    dev environments.
 License: MIT + file LICENSE
-URL: https://github.com/KoderKow/workspace
+URL: https://github.com/KoderKow/workspace,
+    https://koderkow.github.io/workspace/
 BugReports: https://github.com/KoderKow/workspace/issues
 Imports: 
     qs,
     utils
 Suggests: 
+    covr,
     testthat (>= 3.0.0),
     withr
 Config/testthat/edition: 3

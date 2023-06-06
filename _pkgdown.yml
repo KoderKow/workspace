@@ -1,0 +1,14 @@
+url: https://koderkow.github.io/workspace/
+
+template:
+  package: preferably
+  params:
+    toggle: manual
+    twitter:
+      creator: "@koderkow"
+      site: https://koderkow.com/
+      card: summary_large_image
+
+      authors:
+  Kyle Harris:
+    href: https://koderkow.com/

@@ -12,6 +12,7 @@ The goal of {workspace} is to effortlessly create and restore dev environments.
 Useful links:
 \itemize{
   \item \url{https://github.com/KoderKow/workspace}
+  \item \url{https://koderkow.github.io/workspace/}
   \item Report bugs at \url{https://github.com/KoderKow/workspace/issues}
 }
 
