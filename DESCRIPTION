@@ -1,12 +1,10 @@
 Package: workspace
-Title: What the Package Does (One Line, Title Case)
+Title: Effortlessly create and restore dev environments
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Kyle", "Harris", , "koderkow@gmail.com", role = c("aut", "cre"))
+Description: The goal of {workspace} is to effortlessly create and restore dev environments.
+License: MIT + file LICENSE
 URL: https://github.com/KoderKow/workspace
 BugReports: https://github.com/KoderKow/workspace/issues
 Imports: 

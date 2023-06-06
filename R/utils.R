@@ -7,7 +7,7 @@ red_x <- "\033[31mx\033[39m"
 last_hypen_pattern <- "-(?![^-]*-)"
 
 # Create file names
-generate_file_name <- function() {
+generate_file_name <- function(note = "") {
   file_name_init <- gsub(
     x = as.character(Sys.time()),
     pattern = " |:",
@@ -15,9 +15,23 @@ generate_file_name <- function() {
     perl = TRUE
   )
 
-  file_name <- paste0("_workspace/ws-", file_name_init, ".qs")
+  file_name <- paste0("_workspace/ws-", file_name_init, "_", note, ".qs")
 
   return(file_name)
+}
+
+map <- function(.x, .f, ...) {
+  lapply(.x, .f, ...)
+}
+
+map_mold <- function(.x, .f, .mold, ...) {
+  out <- vapply(.x, .f, .mold, ..., USE.NAMES = FALSE)
+  names(out) <- names(.x)
+  out
+}
+
+map_chr <- function(.x, .f, ...) {
+  map_mold(.x, .f, character(1), ...)
 }
 
 # Custom printing
@@ -63,57 +77,9 @@ ignore_check <- function(file_name) {
   return(invisible())
 }
 
-
 # Asserts
 assert_interactive <- function(is_interactive) {
   if (!is_interactive) {
     stop("Restore cancelled. This function should only be ran interactively.")
-  }
-}
-
-# Custom menu for testing
-ws_menu <- function(choices, title = NULL) {
-  # if (!interactive())
-  #   stop("menu() cannot be used non-interactively")
-  # if (isTRUE(graphics)) {
-  #   if (.Platform$OS.type == "windows" || .Platform$GUI ==
-  #       "AQUA" || (capabilities("tcltk") && capabilities("X11") &&
-  #                  suppressWarnings(tcltk::.TkUp))) {
-  #     res <- select.list(choices, multiple = FALSE, title = title,
-  #                        graphics = TRUE)
-  #     return(match(res, choices, nomatch = 0L))
-  #   }
-  # }
-  nc <- length(choices)
-  if (length(title) && nzchar(title[1L])) {
-    cat(title[1L], "\n")
-  }
-  op <- paste0(format(seq_len(nc)), ": ", choices)
-  if (nc > 10L) {
-    fop <- format(op)
-    nw <- nchar(fop[1L], "w") + 2L
-    ncol <- getOption("width") %/% nw
-    if (ncol > 1L) {
-      op <- paste0(
-        fop,
-        c(
-          rep.int(
-            "  ",
-            min(nc, ncol) -
-              1L
-          ),
-          "\n"
-        ),
-        collapse = ""
-      )
-    }
-  }
-  cat("", op, "", sep = "\n")
-  repeat {
-    ind <- .Call(utils:::C_menu, as.character(choices))
-    if (ind <= nc) {
-      return(ind)
-    }
-    cat(gettext("Enter an item from the menu, or 0 to exit\n"))
   }
 }

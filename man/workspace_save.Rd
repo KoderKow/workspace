@@ -2,13 +2,25 @@
 % Please edit documentation in R/workspace_save.R
 \name{workspace_save}
 \alias{workspace_save}
-\title{Title}
+\title{Create a restore point for the current dev environment}
 \usage{
-workspace_save(n_threads = 2, is_interactive = interactive())
+workspace_save(note = "", n_threads = 2, is_interactive = interactive())
 }
 \arguments{
-\item{is_interactive}{}
+\item{note}{Character. Default "". Optional note to add to the restore point.}
+
+\item{n_threads}{Integer. Default 2. Number of threads to use.}
+
+\item{is_interactive}{Logical. Default interactive(). Used for package development only. It is recommended to not change this setting.}
+}
+\value{
+Nothing.
 }
 \description{
-Title
+Create a restore point for the current dev environment
 }
+\seealso{
+Other workspace functions: 
+\code{\link{workspace_restore}()}
+}
+\concept{workspace functions}

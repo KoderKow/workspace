@@ -1,13 +1,15 @@
-#' Title
+#' Create a restore point for the current dev environment
 #'
-#' @param n_threads
-#' @param is_interactive
+#' @param note Character. Default "". Optional note to add to the restore point.
+#' @param n_threads Integer. Default 2. Number of threads to use.
+#' @param is_interactive Logical. Default interactive(). Used for package development only. It is recommended to not change this setting.
 #'
-#' @return
+#' @family workspace functions
+#'
+#' @return Nothing.
 #' @export
-#'
-#' @examples
 workspace_save <- function(
+  note = "",
   n_threads = 2,
   is_interactive = interactive()
 ) {
@@ -36,7 +38,7 @@ workspace_save <- function(
   ignore_check(".gitignore")
   ignore_check(".Rbuildignore")
 
-  file_name <- generate_file_name()
+  file_name <- generate_file_name(note)
 
   list_to_save <- lapply(ls(envir = .GlobalEnv), as.symbol)
 
@@ -49,6 +51,7 @@ workspace_save <- function(
     return(invisible())
   }
 
+  # TODO Move away from do.call
   do.call(
     what = qs::qsavem,
     args = c(

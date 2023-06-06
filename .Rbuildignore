@@ -1,3 +1,6 @@
 ^workspace\.Rproj$
 ^\.Rproj\.user$
 _workspace
+^\.github$
+^README\.Rmd$
+^LICENSE\.md$

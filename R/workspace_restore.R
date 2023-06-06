@@ -1,12 +1,10 @@
-#' Title
+#' Restore dev environment from a restore point
 #'
-#' @param n_threads
-#' @param is_interactive
+#' @inheritParams workspace_save
+#' @family workspace functions
 #'
-#' @return
+#' @return Nothing.
 #' @export
-#'
-#' @examples
 workspace_restore <- function(
   n_threads = 2,
   is_interactive = interactive()
@@ -31,7 +29,7 @@ workspace_restore <- function(
     symbol = red_todo
   )
 
-  method <- ws_menu(c("Latest", "List out the restore points"))
+  method <- utils::menu(c("Latest", "List out the restore points"))
 
   if (method == 1) {
     # Get the file with the latest modification date
@@ -48,19 +46,36 @@ workspace_restore <- function(
     files_display <- gsub("^_workspace\\/ws-", "", sorted_files)
     files_display <- gsub("\\.qs$", "", files_display)
 
-    # Replace the last two hyphens with colons
-    files_display <- sub(last_hypen_pattern, ":", files_display, perl = TRUE)
-    files_display <- sub(last_hypen_pattern, ":", files_display, perl = TRUE)
+    # meta data
+    file_meta <- strsplit(files_display, "_", fixed = TRUE)
 
-    # Replace the last hyphen with a space
-    files_display <- sub(last_hypen_pattern, " ", files_display, perl = TRUE)
+    files_display <-
+      file_meta |>
+      map_chr(\(.x) {
+        # Replace the last two hyphens with colons
+        clean_meta <- sub(last_hypen_pattern, ":", .x[1], perl = TRUE)
+        clean_meta <- sub(last_hypen_pattern, ":", clean_meta, perl = TRUE)
+
+        # Replace the last hyphen with a space
+        clean_meta <- sub(last_hypen_pattern, " ", clean_meta, perl = TRUE)
+
+        # Put the string back together
+        # Show the note if it exists
+        final_string <- paste0(
+          clean_meta,
+          ifelse(length(.x[-1]) > 0, " | ", ""),
+          paste0(.x[-1], collapse = "_")
+        )
+
+        return(final_string)
+      })
 
     cat2(
       "Enter a number corresponding to the wanted workspace restore point:",
       symbol = red_todo
     )
 
-    i <- ws_menu(files_display)
+    i <- utils::menu(files_display)
 
     wanted_file <- sorted_files[i]
   }
@@ -70,7 +85,7 @@ workspace_restore <- function(
     symbol = red_todo
   )
 
-  user_response <- ws_menu(c("Yes", "No"))
+  user_response <- utils::menu(c("Yes", "No"))
 
   if (user_response %in% c(0L, 2L)) {
     cat2(

@@ -2,13 +2,23 @@
 % Please edit documentation in R/workspace_restore.R
 \name{workspace_restore}
 \alias{workspace_restore}
-\title{Title}
+\title{Restore dev environment from a restore point}
 \usage{
 workspace_restore(n_threads = 2, is_interactive = interactive())
 }
 \arguments{
-\item{is_interactive}{}
+\item{n_threads}{Integer. Default 2. Number of threads to use.}
+
+\item{is_interactive}{Logical. Default interactive(). Used for package development only. It is recommended to not change this setting.}
+}
+\value{
+Nothing.
 }
 \description{
-Title
+Restore dev environment from a restore point
 }
+\seealso{
+Other workspace functions: 
+\code{\link{workspace_save}()}
+}
+\concept{workspace functions}

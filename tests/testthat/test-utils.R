@@ -9,7 +9,7 @@ test_that("generate_file_name function works correctly", {
 
   # The middle part of the file name should be a timestamp in the format "YYYY-MM-DD-HH-MM-SS"
   timestamp <- gsub("^_workspace/ws-|\\.qs$", "", file_name)
-  expect_true(grepl("^\\d{4}-\\d{2}-\\d{2}-\\d{2}-\\d{2}-\\d{2}$", timestamp))
+  expect_true(grepl("^\\d{4}-\\d{2}-\\d{2}-\\d{2}-\\d{2}-\\d{2}", timestamp))
 })
 
 # Test for cat2 function
