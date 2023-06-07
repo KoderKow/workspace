@@ -82,7 +82,8 @@ Time to go shutdown RStudio and go home for the day 😴
 
 *Morning time* 🌞
 
-It’s a new day, lets bring back the environment we ended yesterday with
+It’s a new day, lets bring back the environment we ended yesterday with.
+Using `workspace_restore()` let’s restore from the latest restore point
 
 ``` r
 workspace_restore()
@@ -140,10 +141,12 @@ rm(list = ls())
 
 ls()
 
-># character(0)
+#> character(0)
 ```
 
 Good thing we created a restore point after a breakthrough dev moment!
+Using `workspace_restore()` let’s restore by viewing all restore points
+in a list
 
 ``` r
 workspace_restore()
@@ -160,7 +163,7 @@ workspace_restore()
 #> 2: 2023-06-06 23:35:33 | data created
 #> 
 #> Selection: 2
-#> * WARNING! Restoring will reset your global environment. Continue?
+#> * WARNlNG! Restoring will reset your global environment. Continue?
 #> 
 #> 1: Yes
 #> 2: No
@@ -179,6 +182,11 @@ d
 ```
 
 It’s back! Woo! 💃
+
+## What this package does not do today
+
+- Cleanup the `_workspace` folder
+- Allow the user to change the default location of `_workspace`
 
 ## Recognitions
 
