@@ -1,8 +1,8 @@
 #' Create a restore point for the current dev environment
 #'
-#' @param note Character. Default "". Optional note to add to the restore point.
-#' @param n_threads Integer. Default 2. Number of threads to use.
-#' @param is_interactive Logical. Default interactive(). Used for package development only. It is recommended to not change this setting.
+#' @param note Character. Default `""`. Optional note to add to the restore point.
+#' @param n_threads Integer. Default `2`. Number of threads to use.
+#' @param is_interactive Logical. Default `interactive()`. Used for package development only. It is recommended to not change this setting.
 #'
 #' @family workspace functions
 #'
@@ -59,6 +59,13 @@ workspace_save <- function(
       file = file_name,
       nthreads = n_threads
     )
+  )
+
+  cat2(
+    "Restore point created: '",
+    file_name,
+    "'",
+    symbol = green_check
   )
 
   return(invisible())

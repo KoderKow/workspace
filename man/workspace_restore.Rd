@@ -7,9 +7,9 @@
 workspace_restore(n_threads = 2, is_interactive = interactive())
 }
 \arguments{
-\item{n_threads}{Integer. Default 2. Number of threads to use.}
+\item{n_threads}{Integer. Default \code{2}. Number of threads to use.}
 
-\item{is_interactive}{Logical. Default interactive(). Used for package development only. It is recommended to not change this setting.}
+\item{is_interactive}{Logical. Default \code{interactive()}. Used for package development only. It is recommended to not change this setting.}
 }
 \value{
 Nothing.
