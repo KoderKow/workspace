@@ -3,7 +3,7 @@ Description: Create a restorepoint of your dev environment
 Binding: workspace_save
 Interactive: true
 
-Name: Load workspace
-Description: Load a restorepoint for your dev environment
-Binding: workspace_save
+Name: Restore workspace
+Description: Restore a wanted dev environment
+Binding: workspace_restore
 Interactive: true
