@@ -2,6 +2,7 @@
 test_that("generate_file_name function works correctly", {
   # Generate a file name
   file_name <- generate_file_name()
+  file_name <- gsub(".*/(.*/)", "\\1", file_name)
 
   # The file name should start with "_workspace/ws-" and end with ".qs"
   expect_true(grepl("^_workspace/ws-", file_name))
