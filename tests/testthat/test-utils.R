@@ -52,7 +52,7 @@ test_that("assert_interactive function works correctly", {
 })
 
 test_that("meta_cleaner replaces hyphens correctly", {
-  file_meta <- strsplit(files_display, "_", fixed = TRUE)[[1]]
+  file_meta <- strsplit("2023-06-20-18-30-00_", "_", fixed = TRUE)[[1]]
   expected_result <- "2023-06-20 18:30:00"
   result <- meta_cleaner(file_meta)
   expect_equal(result, expected_result)
