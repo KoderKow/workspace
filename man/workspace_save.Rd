@@ -7,17 +7,17 @@
 workspace_save(note = "", n_threads = 2, is_interactive = interactive())
 }
 \arguments{
-\item{note}{Character. Default \code{""}. Optional note to add to the restore point.}
+\item{note}{Character. Default \code{""}. An optional note to add to the restore point, providing additional context or information.}
 
-\item{n_threads}{Integer. Default \code{2}. Number of threads to use.}
+\item{n_threads}{Integer. Default \code{2}. The number of threads to use for the saving process.}
 
-\item{is_interactive}{Logical. Default \code{interactive()}. Used for package development only. It is recommended to not change this setting.}
+\item{is_interactive}{Logical. Default \code{interactive()}. This parameter is used for package development purposes only, and it is recommended to avoid changing this setting.}
 }
 \value{
 Nothing.
 }
 \description{
-Create a restore point for the current dev environment
+This function creates a restore point for the current development environment, allowing you to save the state of your workspace for future restoration.
 }
 \seealso{
 Other workspace functions: 

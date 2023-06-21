@@ -2,20 +2,20 @@
 % Please edit documentation in R/workspace_restore.R
 \name{workspace_restore}
 \alias{workspace_restore}
-\title{Restore dev environment from a restore point}
+\title{Restore the dev environment from a restore point}
 \usage{
 workspace_restore(n_threads = 2, is_interactive = interactive())
 }
 \arguments{
-\item{n_threads}{Integer. Default \code{2}. Number of threads to use.}
+\item{n_threads}{Integer. Default \code{2}. The number of threads to use for the saving process.}
 
-\item{is_interactive}{Logical. Default \code{interactive()}. Used for package development only. It is recommended to not change this setting.}
+\item{is_interactive}{Logical. Default \code{interactive()}. This parameter is used for package development purposes only, and it is recommended to avoid changing this setting.}
 }
 \value{
 Nothing.
 }
 \description{
-Restore dev environment from a restore point
+This function restores the development environment from a previously created restore point, allowing you to revert your workspace to a previous state.
 }
 \seealso{
 Other workspace functions: 

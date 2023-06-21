@@ -40,7 +40,6 @@ test_that("ignore_check adds '_workspace' to the .gitignore file when it doesn't
   )
 })
 
-
 # Test for assert_interactive function
 test_that("assert_interactive function works correctly", {
   # Test case 1: Check if the function throws an error when is_interactive is TRUE
@@ -50,4 +49,25 @@ test_that("assert_interactive function works correctly", {
   # Test case 2: Check if the function does not throw an error when is_interactive is FALSE
   is_interactive <- FALSE
   expect_error(assert_interactive(is_interactive), "Restore cancelled. This function should only be ran interactively.")
+})
+
+test_that("meta_cleaner replaces hyphens correctly", {
+  file_meta <- strsplit("2023-06-20-18-30-00_", "_", fixed = TRUE)[[1]]
+  expected_result <- "2023-06-20 18:30:00"
+  result <- meta_cleaner(file_meta)
+  expect_equal(result, expected_result)
+})
+
+test_that("display_file_name removes prefix and suffix correctly", {
+  # Test case 1: File path with prefix and suffix
+  file_path <- "_workspace/ws-file-name.qs"
+  expected_result <- "file:name"
+  result <- display_file_name(file_path)
+  expect_equal(result, expected_result)
+
+  # Test case 2: File path without prefix and suffix
+  file_path <- "file-name.qs"
+  expected_result <- "file:name"
+  result <- display_file_name(file_path)
+  expect_equal(result, expected_result)
 })

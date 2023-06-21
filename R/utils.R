@@ -83,3 +83,34 @@ assert_interactive <- function(is_interactive) {
     stop("Restore cancelled. This function should only be ran interactively.")
   }
 }
+
+# Display file name
+meta_cleaner <- function(file_meta) {
+  # Replace the last two hyphens with colons
+  clean_meta <- sub(last_hypen_pattern, ":", file_meta[1], perl = TRUE)
+  clean_meta <- sub(last_hypen_pattern, ":", clean_meta, perl = TRUE)
+
+  # Replace the last hyphen with a space
+  clean_meta <- sub(last_hypen_pattern, " ", clean_meta, perl = TRUE)
+
+  # Put the string back together
+  # Show the note if it exists
+  final_string <- paste0(
+    clean_meta,
+    ifelse(length(file_meta[-1]) > 0, " | ", ""),
+    paste0(file_meta[-1], collapse = "_")
+  )
+}
+
+display_file_name <- function(file_path) {
+  # Remove the prefix and suffix
+  files_display <- gsub("^_workspace\\/ws-", "", file_path)
+  files_display <- gsub("\\.qs$", "", files_display)
+
+  # meta data
+  file_meta <- strsplit(files_display, "_", fixed = TRUE)[[1]]
+
+  final_string <- meta_cleaner(file_meta)
+
+  return(final_string)
+}
