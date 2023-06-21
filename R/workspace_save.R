@@ -1,8 +1,10 @@
 #' Create a restore point for the current dev environment
 #'
-#' @param note Character. Default `""`. Optional note to add to the restore point.
-#' @param n_threads Integer. Default `2`. Number of threads to use.
-#' @param is_interactive Logical. Default `interactive()`. Used for package development only. It is recommended to not change this setting.
+#' This function creates a restore point for the current development environment, allowing you to save the state of your workspace for future restoration.
+#'
+#' @param note Character. Default `""`. An optional note to add to the restore point, providing additional context or information.
+#' @param n_threads Integer. Default `2`. The number of threads to use for the saving process.
+#' @param is_interactive Logical. Default `interactive()`. This parameter is used for package development purposes only, and it is recommended to avoid changing this setting.
 #'
 #' @family workspace functions
 #'

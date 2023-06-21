@@ -1,4 +1,6 @@
-#' Restore dev environment from a restore point
+#' Restore the dev environment from a restore point
+#'
+#' This function restores the development environment from a previously created restore point, allowing you to revert your workspace to a previous state.
 #'
 #' @inheritParams workspace_save
 #' @family workspace functions
