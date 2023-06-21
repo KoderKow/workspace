@@ -17,7 +17,7 @@ workspace_restore <- function(
     path = "_workspace",
     full.names = TRUE,
     pattern = "\\.qs$"
-    )
+  )
 
   if (length(files) == 0) {
     cat2(
@@ -40,7 +40,6 @@ workspace_restore <- function(
     wanted_file <- files[which.max(file.info(files)$mtime)]
     i <- 1
     files_display <- display_file_name(wanted_file)
-
   } else {
     # Get file modification times
     file_info <- file.info(files)
