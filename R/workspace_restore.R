@@ -13,7 +13,11 @@ workspace_restore <- function(
   stopifnot(is.numeric(n_threads))
 
   # List all files in the folder
-  files <- list.files(path = "_workspace", full.names = TRUE, pattern = "\\.qs$")
+  files <- list.files(
+    path = "_workspace",
+    full.names = TRUE,
+    pattern = "\\.qs$"
+    )
 
   if (length(files) == 0) {
     cat2(
@@ -34,6 +38,9 @@ workspace_restore <- function(
   if (method == 1) {
     # Get the file with the latest modification date
     wanted_file <- files[which.max(file.info(files)$mtime)]
+    i <- 1
+    files_display <- display_file_name(wanted_file)
+
   } else {
     # Get file modification times
     file_info <- file.info(files)
@@ -51,24 +58,7 @@ workspace_restore <- function(
 
     files_display <-
       file_meta |>
-      map_chr(\(.x) {
-        # Replace the last two hyphens with colons
-        clean_meta <- sub(last_hypen_pattern, ":", .x[1], perl = TRUE)
-        clean_meta <- sub(last_hypen_pattern, ":", clean_meta, perl = TRUE)
-
-        # Replace the last hyphen with a space
-        clean_meta <- sub(last_hypen_pattern, " ", clean_meta, perl = TRUE)
-
-        # Put the string back together
-        # Show the note if it exists
-        final_string <- paste0(
-          clean_meta,
-          ifelse(length(.x[-1]) > 0, " | ", ""),
-          paste0(.x[-1], collapse = "_")
-        )
-
-        return(final_string)
-      })
+      map_chr(meta_cleaner)
 
     cat2(
       "Enter a number corresponding to the wanted workspace restore point:",
@@ -81,7 +71,9 @@ workspace_restore <- function(
   }
 
   cat2(
-    "WARNING! Restoring will reset your global environment. Continue?",
+    "WARNING! Restoring will reset your global environment to '",
+    files_display[i],
+    "'. Continue?",
     symbol = red_todo
   )
 
