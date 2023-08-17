@@ -11,7 +11,7 @@
       "<link id=\"css\" rel=\"stylesheet\" href=\"https://bootswatch.com/3/flatly/bootstrap.css\" onload=\"document.documentElement.style.display = ''\">"
     );
   }
-</script><title>Create a restore point for the current dev environment — workspace_save • workspace</title><!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css"><script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet"><script src="../pkgdown.js"></script><meta property="og:title" content="Create a restore point for the current dev environment — workspace_save"><meta property="og:description" content="This function creates a restore point for the current development environment, allowing you to save the state of your workspace for future restoration."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+</script><title>Create a restore point for the current development environment — workspace_save • workspace</title><!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css"><script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet"><script src="../pkgdown.js"></script><meta property="og:title" content="Create a restore point for the current development environment — workspace_save"><meta property="og:description" content="This function creates a restore point for the current development environment, allowing you to save the state of your workspace for future restoration."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--><!-- Flatly Theme - Light  --><link id="css-light" rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"><!-- Darkly Theme - Dark --><link id="css-dark" rel="stylesheet" href="https://bootswatch.com/3/darkly/bootstrap.css" media="(prefers-color-scheme: dark)"><!-- preferably CSS --><link rel="stylesheet" href="../preferably.css"><link id="css-code-light" rel="stylesheet" href="../code-color-scheme-light.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"><link id="css-code-dark" rel="stylesheet" href="../code-color-scheme-dark.css" media="(prefers-color-scheme: dark)"><script src="../darkswitch.js"></script></head><body data-spy="scroll" data-target="#toc">
@@ -65,7 +65,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a restore point for the current dev environment</h1>
+    <h1>Create a restore point for the current development environment</h1>
     <small class="dont-index">Source: <a href="https://github.com/KoderKow/workspace/blob/HEAD/R/workspace_save.R" class="external-link"><code>R/workspace_save.R</code></a></small>
     <div class="hidden name"><code>workspace_save.Rd</code></div>
     </div>
@@ -98,12 +98,33 @@
 
 <p>Nothing.</p>
     </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>The <code>workspace_save()</code> function creates a restore point for the current development environment. If this is the first time the function is executed in a development environment, it performs the following actions:</p><ol><li><p><strong>Create '_workspace' Folder:</strong> It creates a folder named '_workspace' in the current working directory if it doesn't already exist</p></li>
+<li><p><strong>Ignore '_workspace' in Version Control:</strong> It adds '_workspace' to the '.gitignore' and '.Rbuildignore' files. This ensures that the folder is excluded from version control and building processes</p></li>
+<li><p><strong>Generate Restore Point File:</strong> It generates a restore point file with a filename following the pattern <strong>'<em>workspace/ws-YYYY-MM-DD-HH-MM-SS</em>OPTIONAL NOTE.qs'</strong></p><ul><li><p><strong>YYYY-MM-DD-HH-MM-SS</strong> represents the date and time of the restore point creation</p></li>
+<li><p><strong>OPTIONAL NOTE</strong> corresponds to the optional note provided as a parameter to the function</p></li>
+</ul></li>
+<li><p><strong>Output Log Messages:</strong> The function outputs log messages to provide feedback on the execution status of each step</p><ul><li><p>Log messages starting with a green 'v' indicate successful operations</p></li>
+</ul></li>
+</ol></div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other workspace functions: 
 <code><a href="workspace_restore.html">workspace_restore</a>()</code></p></div>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Default</span></span></span>
+<span class="r-in"><span><span class="fu">workspace_save</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Add a note</span></span></span>
+<span class="r-in"><span><span class="fu">workspace_save</span><span class="op">(</span><span class="st">"lm model"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>

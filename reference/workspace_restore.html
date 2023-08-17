@@ -94,12 +94,31 @@
 
 <p>Nothing.</p>
     </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>The <code>workspace_restore()</code> function restores the current development environment from a save state. When using this function two options will be presented:</p><ol><li><p><strong>Latest</strong></p><ul><li><p>Selecting the latest restore point issues a warning about resetting the global environment and asks for confirmation</p></li>
+<li><p>Upon confirming, it restores the workspace to the latest restore point and displays a "Restore complete" message</p></li>
+</ul></li>
+<li><p><strong>List out the restore points</strong></p><ul><li><p>Selecting to list out the restore points presents a menu with available restore points</p><ul><li><p>Including the date and time along with any optional note associated with each restore point</p></li>
+</ul></li>
+<li><p>Upon selecting a specific restore point, it warns about resetting the global environment and asks for confirmation</p></li>
+<li><p>Upon confirming, it restores the workspace to the chosen restore point and displays a "Restore complete" message</p></li>
+</ul></li>
+</ol></div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other workspace functions: 
 <code><a href="workspace_save.html">workspace_save</a>()</code></p></div>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Initiate the restore process</span></span></span>
+<span class="r-in"><span><span class="fu">workspace_restore</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
