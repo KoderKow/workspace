@@ -4,9 +4,9 @@
 \name{workspace-package}
 \alias{workspace}
 \alias{workspace-package}
-\title{workspace: Effortlessly create and restore dev environments}
+\title{workspace: Effortlessly Create and Restore Development Environments}
 \description{
-The goal of {workspace} is to effortlessly create and restore dev environments.
+The {workspace} package aims to provide a seamless experience in creating and restoring development environments effortlessly. It offers efficient tools and functionalities to manage workspace state, allowing users to easily save and revert to previous setups. The package facilitates improved productivity and organization for developers.
 }
 \seealso{
 Useful links:
@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Kyle Harris \email{koderkow@gmail.com}
+\strong{Maintainer}: Kyle Harris \email{koderkow@gmail.com} [copyright holder]
 
 }
 \keyword{internal}
