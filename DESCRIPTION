@@ -1,10 +1,14 @@
 Package: workspace
-Title: Effortlessly create and restore dev environments
+Title: Effortlessly Create and Restore Development Environments
 Version: 0.1.0.9000
 Authors@R: 
-    person("Kyle", "Harris", , "koderkow@gmail.com", role = c("aut", "cre"))
-Description: The goal of {workspace} is to effortlessly create and restore
-    dev environments.
+    person("Kyle", "Harris", , "koderkow@gmail.com", role = c("aut", "cre", "cph"))
+Description: The {workspace} package aims to provide a seamless experience
+    in creating and restoring development environments effortlessly. It
+    offers efficient tools and functionalities to manage workspace state,
+    allowing users to easily save and revert to previous setups. The
+    package facilitates improved productivity and organization for
+    developers.
 License: MIT + file LICENSE
 URL: https://github.com/KoderKow/workspace,
     https://koderkow.github.io/workspace/

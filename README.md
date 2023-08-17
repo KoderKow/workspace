@@ -12,8 +12,9 @@ status](https://www.r-pkg.org/badges/version/workspace)](https://CRAN.R-project.
 coverage](https://codecov.io/gh/KoderKow/workspace/branch/main/graph/badge.svg)](https://app.codecov.io/gh/KoderKow/workspace?branch=main)
 <!-- badges: end -->
 
-The goal of {workspace} is to effortlessly create and restore dev
-environments.
+Welcome to {workspace}, where magic happens! 🎇 This package aims to
+make your RStudio sessions more exciting and efficient by allowing you
+to effortlessly create and restore dev environments.
 
 ## Installation
 
@@ -23,7 +24,10 @@ devtools::install_github("KoderKow/workspace")
 
 ## Example scenario
 
-It’s a new day and a fresh RStudio session! 🥳
+Imagine it’s a brand new day, and you’re starting a fresh RStudio
+session! 🌟
+
+The workspace is clean and empty:
 
 ``` r
 ls()
@@ -33,9 +37,9 @@ ls()
 
 *8 hours later*
 
-Wow! What a long hard day of development! 😤
+Wow! It has been a long and challenging day of development
 
-Lets review what we did:
+Let’s review what you’ve accomplished:
 
 ``` r
 a <- 1
@@ -46,9 +50,9 @@ ls()
 #> "a" "b"
 ```
 
-Fascinating 🤩
+Fascinating, isn’t it? 🤩
 
-Let’s save our progress using {workspace} package 📦
+Now, let’s save our progress using the {workspace} package! 📦
 
 ``` r
 workspace_save()
@@ -62,13 +66,16 @@ workspace_save()
 Assuming this is the first time using {workspace} in this project, let’s
 go over what is happening here 👨‍🏫
 
-1.  Creates a folder called `_workspace`
-    - This is where all restore point files will live
-2.  If the project has a `.gitignore` file, it will ignore the new
-    `_workspace` folder
-3.  If the project has a `.Rbuildignore` file, it will ignore the new
-    `_workspace` folder
-4.  A message confirming and showing the new restore point
+1.  The function creates a folder named ’\_workspace’ to store restore
+    point files
+2.  If your project has a ‘.gitignore’ file, the ’\_workspace’ folder is
+    automatically excluded
+3.  Similarly, if your project has a ‘.Rbuildignore’ file, the
+    ’\_workspace’ folder is ignored during builds
+4.  The function generates a restore point file, and a message confirms
+    the successful creation
+
+Time to go shutdown RStudio and go home for the day 😴
 
 ``` r
 rm(list = ls())
@@ -77,8 +84,6 @@ ls()
 
 #> character(0)
 ```
-
-Time to go shutdown RStudio and go home for the day 😴
 
 *Morning time* 🌞
 

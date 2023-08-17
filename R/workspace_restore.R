@@ -2,11 +2,28 @@
 #'
 #' This function restores the development environment from a previously created restore point, allowing you to revert your workspace to a previous state.
 #'
+#' The `workspace_restore()` function restores the current development environment from a save state. When using this function two options will be presented:
+#'
+#' 1. **Latest**
+#'     - Selecting the latest restore point issues a warning about resetting the global environment and asks for confirmation
+#'     - Upon confirming, it restores the workspace to the latest restore point and displays a "Restore complete" message
+#' 1. **List out the restore points**
+#'     - Selecting to list out the restore points presents a menu with available restore points
+#'         - Including the date and time along with any optional note associated with each restore point
+#'     - Upon selecting a specific restore point, it warns about resetting the global environment and asks for confirmation
+#'     - Upon confirming, it restores the workspace to the chosen restore point and displays a "Restore complete" message
+#'
 #' @inheritParams workspace_save
 #' @family workspace functions
 #'
 #' @return Nothing.
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' # Initiate the restore process
+#' workspace_restore()
+#' }
 workspace_restore <- function(
   n_threads = 2,
   is_interactive = interactive()

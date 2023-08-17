@@ -1,6 +1,16 @@
-#' Create a restore point for the current dev environment
+#' Create a restore point for the current development environment
 #'
 #' This function creates a restore point for the current development environment, allowing you to save the state of your workspace for future restoration.
+#'
+#' The `workspace_save()` function creates a restore point for the current development environment. If this is the first time the function is executed in a development environment, it performs the following actions:
+#'
+#' 1. **Create '_workspace' Folder:** It creates a folder named '_workspace' in the current working directory if it doesn't already exist
+#' 1. **Ignore '_workspace' in Version Control:** It adds '_workspace' to the '.gitignore' and '.Rbuildignore' files. This ensures that the folder is excluded from version control and building processes
+#' 1. **Generate Restore Point File:** It generates a restore point file with a filename following the pattern **'_workspace/ws-YYYY-MM-DD-HH-MM-SS_{OPTIONAL NOTE}.qs'**
+#'     - **YYYY-MM-DD-HH-MM-SS** represents the date and time of the restore point creation
+#'     - **{OPTIONAL NOTE}** corresponds to the optional note provided as a parameter to the function
+#' 1. **Output Log Messages:** The function outputs log messages to provide feedback on the execution status of each step
+#'     - Log messages starting with a green 'v' indicate successful operations
 #'
 #' @param note Character. Default `""`. An optional note to add to the restore point, providing additional context or information.
 #' @param n_threads Integer. Default `2`. The number of threads to use for the saving process.
@@ -10,6 +20,15 @@
 #'
 #' @return Nothing.
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' # Default
+#' workspace_save()
+#'
+#' # Add a note
+#' workspace_save("lm model")
+#' }
 workspace_save <- function(
   note = "",
   n_threads = 2,
