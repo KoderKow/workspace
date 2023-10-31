@@ -11,3 +11,4 @@
       cat2(symbol = green_check, "Hello World!")
     Output
       [32mv[39m Hello World!
+
