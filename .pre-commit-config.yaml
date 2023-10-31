@@ -9,10 +9,10 @@ repos:
 -   repo: https://github.com/lorenzwalthert/precommit
     rev: v0.3.2.9025
     hooks:
-    # -   id: style-files
-    #     args: [--style_pkg=styler,--style_fun=style_pkg,--addins_style_transformer=grkstyle::grk_style_transformer(use_tabs=FALSE)]
-    #     additional_dependencies:
-    #     - gadenbuie/grkstyle@53051cba7772fd087e730848fb172271715b679c
+    -   id: style-files
+        args: [--style_pkg=grkstyle,--style_fun=grk_style_transformer,--use_tabs=FALSE]
+        additional_dependencies:
+        - gadenbuie/grkstyle@53051cba7772fd087e730848fb172271715b679c
     # codemeta must be above use-tidy-description when both are used
     # -   id: codemeta-description-updated
     -   id: use-tidy-description
