@@ -1,12 +1,18 @@
 # All available hooks: https://pre-commit.com/hooks.html
 # R specific hooks: https://github.com/lorenzwalthert/precommit
+fail_fast: true
 repos:
--   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.3.2.9023
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
     hooks:
-    -   id: style-files
-        args: [--style_pkg=styler, --style_fun=tidyverse_style]
-    -   id: roxygenize
+    -   id: end-of-file-fixer
+-   repo: https://github.com/lorenzwalthert/precommit
+    rev: v0.3.2.9025
+    hooks:
+    # -   id: style-files
+    #     args: [--style_pkg=styler,--style_fun=style_pkg,--addins_style_transformer=grkstyle::grk_style_transformer(use_tabs=FALSE)]
+    #     additional_dependencies:
+    #     - gadenbuie/grkstyle@53051cba7772fd087e730848fb172271715b679c
     # codemeta must be above use-tidy-description when both are used
     # -   id: codemeta-description-updated
     -   id: use-tidy-description
@@ -41,6 +47,8 @@ repos:
           data/.*|
           )$
     -   id: lintr
+        additional_dependencies:
+        - qs
     -   id: readme-rmd-rendered
     -   id: parsable-R
     -   id: no-browser-statement

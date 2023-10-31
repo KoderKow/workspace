@@ -1,20 +1,37 @@
 #' Create a restore point for the current development environment
 #'
-#' This function creates a restore point for the current development environment, allowing you to save the state of your workspace for future restoration.
+#' @description
+#' This function creates a restore point for the current development environment
+#' , allowing you to save the state of your workspace for future restoration.
 #'
-#' The `workspace_save()` function creates a restore point for the current development environment. If this is the first time the function is executed in a development environment, it performs the following actions:
+#' @details
+#' The `workspace_save()` function creates a restore point for the current
+#' development environment. If this is the first time the function is executed
+#' in a development environment, it performs the following actions:
 #'
-#' 1. **Create '_workspace' Folder:** It creates a folder named '_workspace' in the current working directory if it doesn't already exist
-#' 1. **Ignore '_workspace' in Version Control:** It adds '_workspace' to the '.gitignore' and '.Rbuildignore' files. This ensures that the folder is excluded from version control and building processes
-#' 1. **Generate Restore Point File:** It generates a restore point file with a filename following the pattern **'_workspace/ws-YYYY-MM-DD-HH-MM-SS_{OPTIONAL NOTE}.qs'**
-#'     - **YYYY-MM-DD-HH-MM-SS** represents the date and time of the restore point creation
-#'     - **{OPTIONAL NOTE}** corresponds to the optional note provided as a parameter to the function
-#' 1. **Output Log Messages:** The function outputs log messages to provide feedback on the execution status of each step
+#' 1. **Create '_workspace' Folder:** It creates a folder named '_workspace' in
+#' the current working directory if it doesn't already exist
+#' 1. **Ignore '_workspace' in Version Control:** It adds '_workspace' to the
+#' '.gitignore' and '.Rbuildignore' files. This ensures that the folder is
+#' excluded from version control and building processes
+#' 1. **Generate Restore Point File:** It generates a restore point file with a
+#' filename following the pattern
+#' **'_workspace/ws-YYYY-MM-DD-HH-MM-SS_{OPTIONAL NOTE}.qs'**
+#'     - **YYYY-MM-DD-HH-MM-SS** represents the date and time of the restore
+#'     point creation
+#'     - **{OPTIONAL NOTE}** corresponds to the optional note provided as a
+#'     parameter to the function
+#' 1. **Output Log Messages:** The function outputs log messages to provide
+#' feedback on the execution status of each step
 #'     - Log messages starting with a green 'v' indicate successful operations
 #'
-#' @param note Character. Default `""`. An optional note to add to the restore point, providing additional context or information.
-#' @param n_threads Integer. Default `2`. The number of threads to use for the saving process.
-#' @param is_interactive Logical. Default `interactive()`. This parameter is used for package development purposes only, and it is recommended to avoid changing this setting.
+#' @param note Character. Default `""`. An optional note to add to the restore
+#' point, providing additional context or information.
+#' @param n_threads Integer. Default `2`. The number of threads to use for the
+#' saving process.
+#' @param is_interactive Logical. Default `interactive()`. This parameter is
+#' used for package development purposes only, and it is recommended to avoid
+#' changing this setting.
 #'
 #' @family workspace functions
 #'
@@ -33,7 +50,7 @@ workspace_save <- function(
   note = "",
   n_threads = 2,
   is_interactive = interactive()
-) {
+) { # styler: off
   assert_interactive(is_interactive)
   stopifnot(is.numeric(n_threads))
 
@@ -44,7 +61,9 @@ workspace_save <- function(
     dir.create(folder_name)
 
     # Text file for more information
-    text <- "The '_workspace' folder and the 'ws-{date/time}.qs' files are all generated with the R package 'workspace'! https://github.com/KoderKow/workspace for more details."
+    text <- "The '_workspace' folder and the 'ws-{date/time}.qs' files are all
+    generated with the R package 'workspace'!
+    https://github.com/KoderKow/workspace for more details."
 
     # Write the text to a .txt file
     writeLines(text, "_workspace/info.txt")
@@ -61,11 +80,15 @@ workspace_save <- function(
 
   file_name <- generate_file_name(note)
 
-  list_to_save <- lapply(ls(envir = .GlobalEnv), as.symbol)
+  list_to_save <- lapply(
+    ls(envir = .GlobalEnv),
+    as.symbol
+  )
 
   if (length(list_to_save) == 0) {
     cat2(
-      "Save cancelled. There are no variables in your global environment. Try again after creating some variables",
+      "Save cancelled. There are no variables in your global environment. Try
+      again after creating some variables",
       symbol = red_x
     )
 
