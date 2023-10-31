@@ -1,3 +1,5 @@
+’
+.gitignore’
 aut
 BugReports
 CMD
@@ -10,15 +12,18 @@ dev
 dir
 github
 gitignore
+gitignore’
 gmail
 HH
 https
 io
 koderkow
 KoderKow
+modularity
 qs
 qsimage
 Rbuildignore
+Rbuildignore’
 Recognitions
 rmd
 Roxygen
@@ -26,5 +31,6 @@ RoxygenNote
 RStudio
 testthat
 withr
+workspace’
 ws
 YYYY

@@ -2,10 +2,6 @@
 # R specific hooks: https://github.com/lorenzwalthert/precommit
 fail_fast: true
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
-    hooks:
-    -   id: end-of-file-fixer
 -   repo: https://github.com/lorenzwalthert/precommit
     rev: v0.3.2.9025
     hooks:
@@ -40,11 +36,15 @@ repos:
           (.*/|)\.travis\.yml|
           (.*/|)appveyor\.yml|
           (.*/|)NAMESPACE|
+          (.*/|)README\.md|
+          (.*/|)README\.Rmd|
           (.*/|)renv/settings\.dcf|
           (.*/|)renv\.lock|
+          (.*/|)tests/testthat/_snaps/.*|
           (.*/|)WORDLIST|
           \.github/workflows/.*|
           data/.*|
+          \_workspace/.*|
           )$
     -   id: lintr
         additional_dependencies:
@@ -62,7 +62,7 @@ repos:
     -   id: file-contents-sorter
         files: '^\.Rbuildignore$'
     -   id: end-of-file-fixer
-        exclude: '\.Rd'
+        exclude: '\.Rd|tests/testthat/_snaps/.*'
 -   repo: https://github.com/pre-commit-ci/pre-commit-ci-config
     rev: v1.6.1
     hooks:
