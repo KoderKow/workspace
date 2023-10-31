@@ -53,7 +53,10 @@ ignore_check <- function(file_name) {
     ignore_content <- readLines(file_name)
 
     # Remove trailing empty lines
-    while (length(ignore_content) > 0 && ignore_content[length(ignore_content)] == "") {
+    v_check_1 <- length(ignore_content) > 0
+    v_check_2 <- ignore_content[length(ignore_content)] == ""
+
+    while (v_check_1 && v_check_2) {
       ignore_content <- ignore_content[-length(ignore_content)]
     }
 
@@ -100,6 +103,8 @@ meta_cleaner <- function(file_meta) {
     ifelse(length(file_meta[-1]) > 0, " | ", ""),
     paste0(file_meta[-1], collapse = "_")
   )
+
+  return(final_string)
 }
 
 display_file_name <- function(file_path) {

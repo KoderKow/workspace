@@ -7,29 +7,44 @@
 workspace_save(note = "", n_threads = 2, is_interactive = interactive())
 }
 \arguments{
-\item{note}{Character. Default \code{""}. An optional note to add to the restore point, providing additional context or information.}
+\item{note}{Character. Default \code{""}. An optional note to add to the restore
+point, providing additional context or information.}
 
-\item{n_threads}{Integer. Default \code{2}. The number of threads to use for the saving process.}
+\item{n_threads}{Integer. Default \code{2}. The number of threads to use for the
+saving process.}
 
-\item{is_interactive}{Logical. Default \code{interactive()}. This parameter is used for package development purposes only, and it is recommended to avoid changing this setting.}
+\item{is_interactive}{Logical. Default \code{interactive()}. This parameter is
+used for package development purposes only, and it is recommended to avoid
+changing this setting.}
 }
 \value{
 Nothing.
 }
 \description{
-This function creates a restore point for the current development environment, allowing you to save the state of your workspace for future restoration.
+This function creates a restore point for the current development environment
+, allowing you to save the state of your workspace for future restoration.
 }
 \details{
-The \code{workspace_save()} function creates a restore point for the current development environment. If this is the first time the function is executed in a development environment, it performs the following actions:
+The \code{workspace_save()} function creates a restore point for the current
+development environment. If this is the first time the function is executed
+in a development environment, it performs the following actions:
 \enumerate{
-\item \strong{Create '_workspace' Folder:} It creates a folder named '_workspace' in the current working directory if it doesn't already exist
-\item \strong{Ignore '_workspace' in Version Control:} It adds '_workspace' to the '.gitignore' and '.Rbuildignore' files. This ensures that the folder is excluded from version control and building processes
-\item \strong{Generate Restore Point File:} It generates a restore point file with a filename following the pattern \strong{'\emph{workspace/ws-YYYY-MM-DD-HH-MM-SS}{OPTIONAL NOTE}.qs'}
+\item \strong{Create '_workspace' Folder:} It creates a folder named '_workspace' in
+the current working directory if it doesn't already exist
+\item \strong{Ignore '_workspace' in Version Control:} It adds '_workspace' to the
+'.gitignore' and '.Rbuildignore' files. This ensures that the folder is
+excluded from version control and building processes
+\item \strong{Generate Restore Point File:} It generates a restore point file with a
+filename following the pattern
+\strong{'\emph{workspace/ws-YYYY-MM-DD-HH-MM-SS}{OPTIONAL NOTE}.qs'}
 \itemize{
-\item \strong{YYYY-MM-DD-HH-MM-SS} represents the date and time of the restore point creation
-\item \strong{{OPTIONAL NOTE}} corresponds to the optional note provided as a parameter to the function
+\item \strong{YYYY-MM-DD-HH-MM-SS} represents the date and time of the restore
+point creation
+\item \strong{{OPTIONAL NOTE}} corresponds to the optional note provided as a
+parameter to the function
 }
-\item \strong{Output Log Messages:} The function outputs log messages to provide feedback on the execution status of each step
+\item \strong{Output Log Messages:} The function outputs log messages to provide
+feedback on the execution status of each step
 \itemize{
 \item Log messages starting with a green 'v' indicate successful operations
 }

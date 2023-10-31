@@ -7,32 +7,44 @@
 workspace_restore(n_threads = 2, is_interactive = interactive())
 }
 \arguments{
-\item{n_threads}{Integer. Default \code{2}. The number of threads to use for the saving process.}
+\item{n_threads}{Integer. Default \code{2}. The number of threads to use for the
+saving process.}
 
-\item{is_interactive}{Logical. Default \code{interactive()}. This parameter is used for package development purposes only, and it is recommended to avoid changing this setting.}
+\item{is_interactive}{Logical. Default \code{interactive()}. This parameter is
+used for package development purposes only, and it is recommended to avoid
+changing this setting.}
 }
 \value{
 Nothing.
 }
 \description{
-This function restores the development environment from a previously created restore point, allowing you to revert your workspace to a previous state.
+This function restores the development environment from a previously created
+restore point, allowing you to revert your workspace to a previous state.
 }
 \details{
-The \code{workspace_restore()} function restores the current development environment from a save state. When using this function two options will be presented:
+The \code{workspace_restore()} function restores the current development
+environment from a save state. When using this function two options will be
+presented:
 \enumerate{
 \item \strong{Latest}
 \itemize{
-\item Selecting the latest restore point issues a warning about resetting the global environment and asks for confirmation
-\item Upon confirming, it restores the workspace to the latest restore point and displays a "Restore complete" message
+\item Selecting the latest restore point issues a warning about resetting the
+global environment and asks for confirmation
+\item Upon confirming, it restores the workspace to the latest restore point
+and displays a "Restore complete" message
 }
 \item \strong{List out the restore points}
 \itemize{
-\item Selecting to list out the restore points presents a menu with available restore points
+\item Selecting to list out the restore points presents a menu with available
+restore points
 \itemize{
-\item Including the date and time along with any optional note associated with each restore point
+\item Including the date and time along with any optional note associated
+with each restore point
 }
-\item Upon selecting a specific restore point, it warns about resetting the global environment and asks for confirmation
-\item Upon confirming, it restores the workspace to the chosen restore point and displays a "Restore complete" message
+\item Upon selecting a specific restore point, it warns about resetting the
+global environment and asks for confirmation
+\item Upon confirming, it restores the workspace to the chosen restore point
+and displays a "Restore complete" message
 }
 }
 }
