@@ -55,10 +55,10 @@ test_that("assert_interactive function works correctly", {
   # Test case 2: Check if the function does not throw an error when
   # is_interactive is FALSE
   is_interactive <- FALSE
+  x <- "Restore cancelled. This function should only be ran interactively."
   expect_error(
     object = assert_interactive(is_interactive),
-    regexp = "Restore cancelled. This function should only be ran
-    interactively."
+    regexp = x
   )
 })
 
