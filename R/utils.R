@@ -7,7 +7,7 @@ red_x <- "\033[31mx\033[39m"
 last_hypen_pattern <- "-(?![^-]*-)"
 
 # Create file names
-generate_file_name <- function(note = "") {
+generate_file_name <- function(note = "", .dir = "_workspace") {
   file_name_init <- gsub(
     x = as.character(Sys.time()),
     pattern = " |:",
@@ -15,7 +15,7 @@ generate_file_name <- function(note = "") {
     perl = TRUE
   )
 
-  file_name <- paste0("_workspace/ws-", file_name_init, "_", note, ".qs")
+  file_name <- paste0(.dir, "/ws-", file_name_init, "_", note, ".qs")
 
   return(file_name)
 }

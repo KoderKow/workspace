@@ -5,11 +5,13 @@
 
 <!-- badges: start -->
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/workspace)](https://CRAN.R-project.org/package=workspace)
 [![R-CMD-check](https://github.com/KoderKow/workspace/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/KoderKow/workspace/actions/workflows/R-CMD-check.yaml)
+[![pre-commit.ci
+status](https://results.pre-commit.ci/badge/github/KoderKow/workspace/main.svg)](https://results.pre-commit.ci/latest/github/KoderKow/workspace/main)
 [![Codecov test
 coverage](https://codecov.io/gh/KoderKow/workspace/branch/main/graph/badge.svg)](https://app.codecov.io/gh/KoderKow/workspace?branch=main)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/workspace)](https://CRAN.R-project.org/package=workspace)
 <!-- badges: end -->
 
 Welcome to {workspace}, where magic happens! 🎇 This package aims to
