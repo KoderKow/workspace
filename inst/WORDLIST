@@ -1,6 +1,8 @@
-.gitignore’
+<U+2019>
+.gitignore<U+2019>
 aut
 BugReports
+ci
 CMD
 Codecov
 Config
@@ -11,7 +13,8 @@ dev
 dir
 github
 gitignore
-gitignore’
+gitignore<U+2019>
+gitignore<U+2019>
 gmail
 HH
 href
@@ -23,10 +26,12 @@ MERCHANTABILITY
 modularity
 NONINFRINGEMENT
 params
+pre
 qs
 qsimage
 Rbuildignore
-Rbuildignore’
+Rbuildignore<U+2019>
+Rbuildignore<U+2019>
 Recognitions
 restorepoint
 rmd
@@ -36,7 +41,8 @@ RStudio
 sublicense
 testthat
 withr
-workspace’
+workspace<U+2019>
+workspace<U+2019>
 ws
 YYYY
-’
+<U+2019>

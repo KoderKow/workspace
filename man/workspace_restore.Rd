@@ -48,6 +48,32 @@ and displays a "Restore complete" message
 }
 }
 }
+\section{Restore method}{
+There are two ways to restore the environment
+\enumerate{
+\item \strong{Clear}
+\itemize{
+\item Wipe the environment clean and restore the workspace from the wanted
+file
+\item This option is best if you want to reproduce the wanted environment
+when it was saved
+}
+\item \strong{Merge}
+\itemize{
+\item Combines the current environment/workspace with the wanted file
+\item There are two merge styles
+\itemize{
+\item 1: \strong{Current environment}: When bringing in the workspace from the
+wanted file, it will prioritize the current environments variables
+if the same variable is used in both environments
+\item 2: \strong{Restore point}: When bringing in the workspace from the
+wanted file, it will prioritize the restore file's variables if the
+same variable is used in both environments
+}
+}
+}
+}
+
 \examples{
 \dontrun{
 # Initiate the restore process

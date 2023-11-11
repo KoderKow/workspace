@@ -24,6 +24,25 @@
 #'     - Upon confirming, it restores the workspace to the chosen restore point
 #'     and displays a "Restore complete" message
 #'
+#' # Restore method
+#'
+#' There are two ways to restore the environment
+#'
+#' 1. **Clear**
+#'     - Wipe the environment clean and restore the workspace from the wanted
+#'     file
+#'     - This option is best if you want to reproduce the wanted environment
+#'     when it was saved
+#' 2. **Merge**
+#'     - Combines the current environment/workspace with the wanted file
+#'     - There are two merge styles
+#'         - 1: **Current environment**: When bringing in the workspace from the
+#'          wanted file, it will prioritize the current environments variables
+#'          if the same variable is used in both environments
+#'         - 2: **Restore point**: When bringing in the workspace from the
+#'         wanted file, it will prioritize the restore file's variables if the
+#'         same variable is used in both environments
+#'
 #' @inheritParams workspace_save
 #' @family workspace functions
 #'
@@ -71,7 +90,8 @@ workspace_restore <- function(
 
   if (user_clear_or_merge == "Clear") {
     cat2(
-      "WARNING! Restoring will reset your global environment to '",
+      "WARNING! Restoring will clear out your current environment and reset your
+      global environment to '",
       r$files_display[r$i],
       "'. Continue?",
       symbol = red_todo
@@ -92,10 +112,10 @@ workspace_restore <- function(
     to_keep <- c("wanted_file", "n_threads")
     vars <- ls()
     to_remove <- setdiff(vars, to_keep)
-    suppressWarnings(rm(list = to_remove, envir = .GlobalEnv))
+    suppressWarnings(rm(list = r$to_remove, envir = .GlobalEnv))
 
     qs::qreadm(
-      file = wanted_file,
+      file = r$wanted_file,
       env = .GlobalEnv,
       nthreads = n_threads
     )
