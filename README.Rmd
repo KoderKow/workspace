@@ -185,10 +185,15 @@ d
 
 It's back! Woo! 💃
 
-## What this package does not do today
+## Contributing
 
-- Cleanup the `_workspace` folder
-- Allow the user to change the default location of `_workspace`
+Contributing is welcome! This package uses the [precommit framework](https://lorenzwalthert.github.io/precommit/index.html) and passing the precommit test for PRs is required.
+
+```r
+remotes::install_github("lorenzwalthert/precommit")
+precommit::install_precommit()
+precommit::use_precommit()
+```
 
 ## Recognitions
 
