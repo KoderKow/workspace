@@ -50,7 +50,7 @@
 #' }
 workspace_save <- function(
   note = "",
-  .dir = "_workspace",
+  .dir = getOption("grkstyle.use_tabs", "_workspace"),
   n_threads = 2,
   is_interactive = interactive()
 ) {
