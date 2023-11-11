@@ -6,7 +6,7 @@
 \usage{
 workspace_save(
   note = "",
-  .dir = getOption("grkstyle.use_tabs", "_workspace"),
+  .dir = getOption("workspace.dir", "_workspace"),
   n_threads = 2,
   is_interactive = interactive()
 )
