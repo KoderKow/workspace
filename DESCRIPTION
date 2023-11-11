@@ -1,6 +1,6 @@
 Package: workspace
 Title: Effortlessly Create and Restore Development Environments
-Version: 0.1.0.9000
+Version: 0.1.1
 Authors@R:
     person("Kyle", "Harris", , "koderkow@gmail.com", role = c("aut", "cre", "cph"))
 Description: The {workspace} package aims to provide a seamless experience
