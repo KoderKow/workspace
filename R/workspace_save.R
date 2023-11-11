@@ -27,6 +27,8 @@
 #'
 #' @param note Character. Default `""`. An optional note to add to the restore
 #' point, providing additional context or information.
+#' @param .dir Character. Default `getOption("workspace.dir", "_workspace")`.
+#' Directory path to save workspace files.
 #' @param n_threads Integer. Default `2`. The number of threads to use for the
 #' saving process.
 #' @param is_interactive Logical. Default `interactive()`. This parameter is
@@ -35,7 +37,7 @@
 #'
 #' @family workspace functions
 #'
-#' @return Nothing.
+#' @return File path of the newly created workspace file, invisibly.
 #' @export
 #'
 #' @examples
@@ -48,17 +50,18 @@
 #' }
 workspace_save <- function(
   note = "",
+  .dir = getOption("grkstyle.use_tabs", "_workspace"),
   n_threads = 2,
   is_interactive = interactive()
-) { # styler: off
+) {
   assert_interactive(is_interactive)
   stopifnot(is.numeric(n_threads))
 
   folder_name <- "_workspace"
 
   # Check if the folder exists
-  if (!file.exists(folder_name) || !file.info(folder_name)$isdir) {
-    dir.create(folder_name)
+  if (!file.exists(.dir) || !file.info(.dir)$isdir) {
+    dir.create(.dir)
 
     # Text file for more information
     text <- "The '_workspace' folder and the 'ws-{date/time}.qs' files are all
@@ -105,12 +108,14 @@ workspace_save <- function(
     )
   )
 
-  cat2(
-    "Restore point created: '",
-    file_name,
-    "'",
-    symbol = green_check
-  )
+  if (note != "tmp_merge_") {
+    cat2(
+      "Restore point created: '",
+      file_name,
+      "'",
+      symbol = green_check
+    )
+  }
 
-  return(invisible())
+  return(invisible(file_name))
 }

@@ -24,6 +24,25 @@
 #'     - Upon confirming, it restores the workspace to the chosen restore point
 #'     and displays a "Restore complete" message
 #'
+#' # Restore method
+#'
+#' There are two ways to restore the environment
+#'
+#' 1. **Clear**
+#'     - Wipe the environment clean and restore the workspace from the wanted
+#'     file
+#'     - This option is best if you want to reproduce the wanted environment
+#'     when it was saved
+#' 2. **Merge**
+#'     - Combines the current environment/workspace with the wanted file
+#'     - There are two merge styles
+#'         - 1: **Current environment**: When bringing in the workspace from the
+#'          wanted file, it will prioritize the current environments variables
+#'          if the same variable is used in both environments
+#'         - 2: **Restore point**: When bringing in the workspace from the
+#'         wanted file, it will prioritize the restore file's variables if the
+#'         same variable is used in both environments
+#'
 #' @inheritParams workspace_save
 #' @family workspace functions
 #'
@@ -38,7 +57,7 @@
 workspace_restore <- function(
   n_threads = 2,
   is_interactive = interactive()
-) { # styler: off
+) {
   assert_interactive(is_interactive)
   stopifnot(is.numeric(n_threads))
 
@@ -59,6 +78,124 @@ workspace_restore <- function(
     return(invisible())
   }
 
+  r <- restore_method(files)
+
+  cat2(
+    "Do you want to clear your environment or merge?",
+    symbol = red_todo
+  )
+
+  cm <- c("Clear", "Merge")
+  user_clear_or_merge <- cm[utils::menu(cm)]
+
+  if (user_clear_or_merge == "Clear") {
+    cat2(
+      "WARNING! Restoring will clear out your current environment and reset your
+      global environment to '",
+      r$files_display[r$i],
+      "'. Continue?",
+      symbol = red_todo
+    )
+
+    user_response <- utils::menu(c("Yes", "No"))
+
+    if (user_response %in% c(0L, 2L)) {
+      cat2(
+        "Restore cancelled",
+        symbol = red_x
+      )
+
+      return(invisible())
+    }
+
+    # Clear all variables except wanted_file and n_threads
+    to_keep <- c("wanted_file", "n_threads")
+    vars <- ls()
+    to_remove <- setdiff(vars, to_keep)
+    suppressWarnings(rm(list = r$to_remove, envir = .GlobalEnv))
+
+    qs::qreadm(
+      file = r$wanted_file,
+      env = .GlobalEnv,
+      nthreads = n_threads
+    )
+  } else {
+    cat2(
+      "When merging do you want to prioritize the current environment or the
+      restore point? For more information check the docs; '?workspace_restore'",
+      symbol = red_todo
+    )
+
+    merge_options <- c("Current environment", "Restore point")
+    user_merge_options <- merge_options[utils::menu(merge_options)]
+
+    cat2(
+      "Continuing will modify your current workspace environment. Continue?",
+      symbol = red_x
+    )
+
+    user_response <- utils::menu(c("Yes", "No"))
+
+    if (user_response %in% c(0L, 2L)) {
+      cat2(
+        "Restore cancelled",
+        symbol = red_x
+      )
+
+      return(invisible())
+    }
+
+    # Save current env as a temp file
+    tmp_dir <- withr::local_tempdir()
+    tmp_ws <- workspace_save(
+      note = "tmp_merge_",
+      .dir = tmp_dir
+    )
+
+    # Based on the user's selection, load restore point without resetting for
+    # "restore point". for "current environment" load the restore point and then
+    # load the newly created restore point
+    to_keep <- c("wanted_file", "n_threads")
+    vars <- ls()
+    to_remove <- setdiff(vars, to_keep)
+    suppressWarnings(rm(list = to_remove, envir = .GlobalEnv))
+
+    if (user_merge_options == "Current environment") {
+      qs::qreadm(
+        file = r$wanted_file,
+        env = .GlobalEnv,
+        nthreads = n_threads
+      )
+
+      qs::qreadm(
+        file = tmp_ws,
+        env = .GlobalEnv,
+        nthreads = n_threads
+      )
+    } else {
+      qs::qreadm(
+        file = tmp_ws,
+        env = .GlobalEnv,
+        nthreads = n_threads
+      )
+
+      qs::qreadm(
+        file = r$wanted_file,
+        env = .GlobalEnv,
+        nthreads = n_threads
+      )
+    }
+  }
+
+  cat2(
+    "Restore complete",
+    symbol = green_check
+  )
+
+  return(invisible())
+}
+
+restore_method <- function(files) {
   cat2(
     "Would you like to use the latest or a specific restore point?",
     symbol = red_todo
@@ -100,40 +237,11 @@ workspace_restore <- function(
     wanted_file <- sorted_files[i]
   }
 
-  cat2(
-    "WARNING! Restoring will reset your global environment to '",
-    files_display[i],
-    "'. Continue?",
-    symbol = red_todo
+  l_return <- list(
+    wanted_file = wanted_file,
+    files_display = files_display,
+    i = i
   )
 
-  user_response <- utils::menu(c("Yes", "No"))
-
-  if (user_response %in% c(0L, 2L)) {
-    cat2(
-      "Restore cancelled",
-      symbol = red_x
-    )
-
-    return(invisible())
-  }
-
-  # Clear all variables except wanted_file and n_threads
-  to_keep <- c("wanted_file", "n_threads")
-  vars <- ls()
-  to_remove <- setdiff(vars, to_keep)
-  suppressWarnings(rm(list = to_remove, envir = .GlobalEnv))
-
-  qs::qreadm(
-    file = wanted_file,
-    env = .GlobalEnv,
-    nthreads = n_threads
-  )
-
-  cat2(
-    "Restore complete",
-    symbol = green_check
-  )
-
-  return(invisible())
+  return(l_return)
 }

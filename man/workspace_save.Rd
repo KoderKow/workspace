@@ -4,11 +4,19 @@
 \alias{workspace_save}
 \title{Create a restore point for the current development environment}
 \usage{
-workspace_save(note = "", n_threads = 2, is_interactive = interactive())
+workspace_save(
+  note = "",
+  .dir = getOption("grkstyle.use_tabs", "_workspace"),
+  n_threads = 2,
+  is_interactive = interactive()
+)
 }
 \arguments{
 \item{note}{Character. Default \code{""}. An optional note to add to the restore
 point, providing additional context or information.}
+
+\item{.dir}{Character. Default \code{getOption("workspace.dir", "_workspace")}.
+Directory path to save workspace files.}
 
 \item{n_threads}{Integer. Default \code{2}. The number of threads to use for the
 saving process.}
@@ -18,7 +26,7 @@ used for package development purposes only, and it is recommended to avoid
 changing this setting.}
 }
 \value{
-Nothing.
+File path of the newly created workspace file, invisibly.
 }
 \description{
 This function creates a restore point for the current development environment

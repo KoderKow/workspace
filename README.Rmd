@@ -16,9 +16,10 @@ knitr::opts_chunk$set(
 # {workspace}
 
 <!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/workspace)](https://CRAN.R-project.org/package=workspace)
 [![R-CMD-check](https://github.com/KoderKow/workspace/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/KoderKow/workspace/actions/workflows/R-CMD-check.yaml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/KoderKow/workspace/main.svg)](https://results.pre-commit.ci/latest/github/KoderKow/workspace/main)
 [![Codecov test coverage](https://codecov.io/gh/KoderKow/workspace/branch/main/graph/badge.svg)](https://app.codecov.io/gh/KoderKow/workspace?branch=main)
+[![CRAN status](https://www.r-pkg.org/badges/version/workspace)](https://CRAN.R-project.org/package=workspace)
 <!-- badges: end -->
 
 Welcome to {workspace}, where magic happens! 🎇 This package aims to make your RStudio sessions more exciting and efficient by allowing you to effortlessly create and restore dev environments.
@@ -184,10 +185,15 @@ d
 
 It's back! Woo! 💃
 
-## What this package does not do today
+## Contributing
 
-- Cleanup the `_workspace` folder
-- Allow the user to change the default location of `_workspace`
+Contributing is welcome! This package uses the [precommit framework](https://lorenzwalthert.github.io/precommit/index.html) and passing the precommit test for PRs is required.
+
+```r
+remotes::install_github("lorenzwalthert/precommit")
+precommit::install_precommit()
+precommit::use_precommit()
+```
 
 ## Recognitions
 
