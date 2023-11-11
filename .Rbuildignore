@@ -3,6 +3,7 @@
 ^README\.Rmd$
 ^\.Rproj\.user$
 ^\.github$
+^\.lintr$
 ^\.pre-commit-config\.yaml$
 ^_pkgdown\.yml$
 ^codecov\.yml$
@@ -11,3 +12,4 @@
 ^pkgdown$
 ^workspace\.Rproj$
 _workspace
+dev
