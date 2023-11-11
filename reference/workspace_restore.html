@@ -30,7 +30,7 @@ restore point, allowing you to revert your workspace to a previous state."><!-- 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">workspace</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.1</span>
       </span>
     </div>
 
@@ -116,6 +116,23 @@ with each restore point</p></li>
 global environment and asks for confirmation</p></li>
 <li><p>Upon confirming, it restores the workspace to the chosen restore point
 and displays a "Restore complete" message</p></li>
+</ul></li>
+</ol></div>
+    <div id="restore-method">
+    <h2>Restore method</h2>
+    <p>There are two ways to restore the environment</p><ol><li><p><strong>Clear</strong></p><ul><li><p>Wipe the environment clean and restore the workspace from the wanted
+file</p></li>
+<li><p>This option is best if you want to reproduce the wanted environment
+when it was saved</p></li>
+</ul></li>
+<li><p><strong>Merge</strong></p><ul><li><p>Combines the current environment/workspace with the wanted file</p></li>
+<li><p>There are two merge styles</p><ul><li><p>1: <strong>Current environment</strong>: When bringing in the workspace from the
+wanted file, it will prioritize the current environments variables
+if the same variable is used in both environments</p></li>
+<li><p>2: <strong>Restore point</strong>: When bringing in the workspace from the
+wanted file, it will prioritize the restore file's variables if the
+same variable is used in both environments</p></li>
+</ul></li>
 </ul></li>
 </ol></div>
     <div id="see-also">
