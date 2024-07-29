@@ -3,7 +3,7 @@
 fail_fast: true
 repos:
 -   repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.2
+    rev: v0.4.3
     hooks:
     -   id: style-files
         args: [--style_pkg=grkstyle,--style_fun=grk_style_transformer,--use_tabs=FALSE]
